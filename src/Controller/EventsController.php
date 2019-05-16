@@ -102,7 +102,17 @@ class EventsController extends AbstractFOSRestController
             return View::create($validationErrors, Response::HTTP_BAD_REQUEST);
         }
 
-        $event = $this->eventService->updateEvent($eventId, $eventDTO);
+        $event = $this->eventService->getEvent($eventId);
+
+        if (null === $event){
+            $errors = [
+                'propertyPath' => 'event',
+                'message'      => 'The Event was not found'
+            ];
+            return View::create($errors, Response::HTTP_NOT_FOUND);
+        }
+
+        $event = $this->eventService->updateEvent($event, $eventDTO);
 
         if (null === $event){
             $errors = [
