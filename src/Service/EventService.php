@@ -45,8 +45,13 @@ class EventService
         return $event;
     }
 
-    public function updateEvent(int $event, EventDTO $eventDTO): Event
+    public function updateEvent(int $eventId, EventDTO $eventDTO): Event
     {
+        $event = $this->eventRepository->find($eventId);
+        if (!$event) {
+            return null;
+        }
+
         $event->setName($eventDTO->getName());
         $event->setNrSlots($eventDTO->getNrSlots());
         $event->setStartDate(new \DateTime($eventDTO->getStartDate()));
