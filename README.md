@@ -4,8 +4,14 @@ Steps to install:
 
 1. Clone the project
 2. Run composer install
-3. RUN php bin/console doctrine:migrations:migrate
+3. 
+Am create un DB freelancing-test dupa cum se observa in .env
+DATABASE_URL=pgsql://root:root@127.0.0.1:5432/freelancing-test
+
+RUN php bin/console doctrine:migrations:migrate
+
 4. Run : php bin/console server:run
+
 5. I've used Postman to test my api
 
    Ex Create Event:
