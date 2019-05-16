@@ -83,7 +83,7 @@ class EventsController extends AbstractFOSRestController
                 'propertyPath' => 'event',
                 'message'      => 'The Event was not created'
             ];
-            return View::create($errors, Response::HTTP_NOT_FOUND);
+            return View::create($errors, Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         return View::create($event, Response::HTTP_CREATED);
@@ -109,7 +109,7 @@ class EventsController extends AbstractFOSRestController
                 'propertyPath' => 'event',
                 'message'      => 'The Event was not updated'
             ];
-            return View::create($errors, Response::HTTP_NOT_FOUND);
+            return View::create($errors, Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         return View::create($event, Response::HTTP_OK);
@@ -173,7 +173,7 @@ class EventsController extends AbstractFOSRestController
                 'propertyPath' => 'reservation',
                 'message'      => 'The Reservation was not save'
             ];
-            return View::create($errors, Response::HTTP_NOT_FOUND);
+            return View::create($errors, Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         return View::create($reservation, Response::HTTP_OK);
